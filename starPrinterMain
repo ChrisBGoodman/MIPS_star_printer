@@ -9,7 +9,7 @@
 askInput: .asciiz "How man stars would you like to print?" 	#Text output 
 numStars: .word 8						#Space to store input 
 star:     .asciiz "*" 						#single star to print 
-line:  .asciiz "\n"						#star with newline char attached 
+line:  .asciiz "\n"						#newline char attached 
 end:   .asciiz "Thank you for using the program!"
 #---------------------------------------------------------
 
@@ -50,11 +50,11 @@ addi $t1, $t1, 1 	#t1 ++ 				  	      	#
 j theLoop 								#
 									#
 lineLoop:		        # <---------<----------<-------------<--#
-la $a0, line 	#load new line into memory address
-syscall 	#print new line char so that system skips to next line to begin printing stars 
-la $a0, star  	#load star back into the memory to continue printing next row of stars 
-beq $t1, $s1 endProgram	#If num of stars per line is equal to num of lines needed end
-li $t1, 0	#since on new line now, num of stars is reset to 0
+la $a0, line 			#load new line into memory address
+syscall 			#print new line char so that system skips to next line to begin printing stars 
+la $a0, star  			#load star back into the memory to continue printing next row of stars 
+beq $t1, $s1 endProgram		#If num of stars per line is equal to num of lines needed end
+li $t1, 0			#since on new line now, num of stars is reset to 0
 addi $t2, $t2, 1
 j theLoop
 
