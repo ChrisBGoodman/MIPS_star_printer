@@ -50,6 +50,7 @@ addi $t1, $t1, 1 	#t1 ++ 				  	      	#
 j theLoop 								#
 									#
 lineLoop:		        # <---------<----------<-------------<--#
+
 la $a0, line 			#load new line into memory address
 syscall 			#print new line char so that system skips to next line to begin printing stars 
 la $a0, star  			#load star back into the memory to continue printing next row of stars 
@@ -61,5 +62,5 @@ j theLoop
 endProgram: 
 la $a0, end
 syscall
-li $v0, 10		# op code for terminate 
+li $v0, 10			# op code for terminate 
 syscall 
